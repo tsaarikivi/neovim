@@ -49,6 +49,9 @@ let g:airline#extensions#tabline#enabled = 1
 nnoremap <leader>ff :CtrlP ~/code<CR>
 inoremap <leader>ff <Esc>:CtrlP ~/code<CR>
 
+"css-color
+"let g:cssColorVimDoNotMessMyUpdatetime = 1
+
 "--------
 "Functionality
 "----------
@@ -135,10 +138,22 @@ inoremap <leader>qq <Esc>:q<CR>
 nnoremap <leader>qa :qa<CR>
 inoremap <leader>qa <Esc>:qa<CR>
 
-"use ,tt to do the double terminals
-nnoremap <leader>tt <C-w>v<C-w>l:terminal<CR><C-\><C-n><C-w>s<C-w>j:terminal<CR><C-\><C-n><C-w>h
-"use ,td to destroy the double terminals from the left window
-nnoremap <leader>td <C-w>l:q!<CR>:q!<CR>
+"use ,1t to do one terminal
+nnoremap <leader>1t <C-w>v<C-w>l:terminal<CR><C-\><C-n><C-w>h
+"use ,1d to destroy one terminal
+nnoremap <leader>1d <C-w>l:q!<CR><C-w>h
+"use ,2t to do the double terminals
+nnoremap <leader>2t <C-w>v<C-w>l:terminal<CR><C-\><C-n><C-w>s<C-w>j:terminal<CR><C-\><C-n><C-w>h
+"use ,2d to destroy the double terminals from the left window
+nnoremap <leader>2d <C-w>l:q!<CR>:q!<CR><C-w>h
+"use ,3t to do the triple terminals
+nnoremap <leader>3t <C-w>v<C-w>l:terminal<CR><C-\><C-n><C-w>s<C-w>j:terminal<CR><C-\><C-n><C-w>s<C-w>j:terminal<CR><C-\><C-n><C-w>h
+"use ,3d to destroy the triple terminals from the left window
+nnoremap <leader>3d <C-w>l:q!<CR>:q!<CR>:q!<CR><C-w>h
+"use ,at to add a terminal to right
+nnoremap <leader>at <C-w>l<C-w>j<C-w>s<C-w>j:terminal<CR><C-\><C-n><C-w>h
+"rails terminals summon
+nnoremap <leader>rt <C-w>v<C-w>l:terminal<CR>cd code/sample_app<CR><C-\><C-n><C-w>s<C-w>j:terminal<CR>cd code/sample_app && bundle exec guard<CR><C-\><C-n><C-w>s<C-w>j:terminal<CR>cd code/sample_app && rails s<CR><C-\><C-n><C-w>h
 
 "indent all rows
 nnoremap <leader>ia gg=<S-g>
