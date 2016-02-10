@@ -59,6 +59,9 @@ inoremap <leader>ff <Esc>:CtrlP ~/code<CR>
 "autoread files when focus gained
 set autoread
 
+"keep cursor in middle
+set so=999
+
 "256col
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
