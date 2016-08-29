@@ -1,14 +1,24 @@
+":PlugUpgrade :PlugClean :PlugInstall :PlugUpdate
 call plug#begin()
 
-Plug 'https://github.com/croaker/mustang-vim.git'
+Plug 'croaker/mustang-vim'
 
-Plug 'https://github.com/vim-airline/vim-airline.git'
+Plug 'NLKNguyen/papercolor-theme'
 
-Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-Plug 'https://github.com/scrooloose/nerdcommenter.git'
+Plug 'kien/ctrlp.vim'
 
-Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'tpope/vim-surround'
+
+Plug 'scrooloose/syntastic'
+
+Plug 'mxw/vim-jsx'
+
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -25,6 +35,19 @@ augroup END " }
 syntax on
 syntax enable
 filetype plugin indent on
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_aluto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"syntastic Checkers
+let g:syntastic_javascript_checkers = ['eslint']
+"jsx
+let g:jsx_ext_required = 0
 
 "jump to last postition whtn reopening file
 if has("autocmd")
@@ -68,11 +91,8 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 "colorscheme
-colo mustang
-"transparent bg
-hi Normal ctermbg=none
-highlight NonText ctermbg=none
-highlight LineNr ctermbg=none
+set background=light
+colo PaperColor
 
 "enable mouse
 "set mouse=a
@@ -86,9 +106,9 @@ set relativenumber
 set nuw=6
 
 "Tabstuff
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 "Always show the status line
@@ -167,10 +187,10 @@ nnoremap <leader>/ :noh<CR>
 "delete all
 nnoremap <leader>da ggdGi
 
-"use CTRLH and L to navigate BUFFERS
+"use shift H and L to navigate BUFFERS
 nnoremap <S-h> :bprevious<CR>
 nnoremap <S-l> :bnext<CR>
-"use ALThjlk to navigate windows
+"use ctrl hjkl to navigate windows
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
@@ -188,11 +208,9 @@ inoremap <leader>xx <Esc>:w<CR>:bd<CR>
 "autocomplete html tags with ,<
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType eruby set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=htmlcomplete#CompleteTags
 nnoremap <leader>< $a</<C-X><C-O><Esc>
 inoremap <leader>< <Esc>$a</<C-X><C-O>
-"set tag middle line
-inoremap <leader>> ></<C-X><C-O><Esc>%i
-inoremap <leader>>> ></<C-X><C-O><Esc>%i<CR><Esc><S-O>
 
 ","" gives ="|"
 inoremap <leader>22 =""<Esc>i
@@ -200,12 +218,6 @@ inoremap <leader>"" =""<Esc>i
 
 "make insides pop
 nnoremap <leader>oo F>a<CR><Esc>f<i<CR><Esc>k$
-
-"ruby tags
-"%%% gives <%
-inoremap %%% <%  %><Esc>hhi
-"=== gives <%=
-inoremap === <%=  %><Esc>hhi
 
 "ö ä
 nmap ö 0
