@@ -199,7 +199,7 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <C-l> <C-w><C-w>
 
 "use ,xx to kill buffer
 nnoremap <leader>xx :w<CR>:bd<CR>
