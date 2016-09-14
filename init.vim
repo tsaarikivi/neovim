@@ -1,9 +1,15 @@
 ":PlugUpgrade :PlugClean :PlugInstall :PlugUpdate
 call plug#begin()
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 Plug 'croaker/mustang-vim'
 
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'akmassey/vim-codeschool'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -11,6 +17,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/ctrlp.vim'
 
 Plug 'scrooloose/nerdcommenter'
+
+Plug 'scrooloose/nerdtree'
 
 Plug 'tpope/vim-surround'
 
@@ -28,13 +36,16 @@ let maplocalleader = ","
 
 "autoreload vimrc when changes made to it
 augroup reload_vimrc " {
-  autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
 syntax on
 syntax enable
 filetype plugin indent on
+
+"airline
+let g:airline#extensions#tabline#enabled = 1
 
 "syntastic
 set statusline+=%#warningmsg#
@@ -49,28 +60,31 @@ let g:syntastic_javascript_checkers = ['eslint']
 "jsx
 let g:jsx_ext_required = 0
 
+"deoplete
+let g:deoplete#enable_at_startup = 1
+
 "jump to last postition whtn reopening file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 "---------
 "Plugins
 "----------
 
-"airline
-let g:airline#extensions#tabline#enabled = 1
-
 "auto open nerdtree
-"autocmd vimenter * NERDTree
-"let g:NERDTreeWinPos = "right"
+autocmd vimenter * NERDTree
+autocmd vimenter * NERDTreeToggle
+let g:NERDTreeWinPos = "left"
 "toggle nerdtree
-"nmap <F2> :NERDTreeToggle<CR>
-"imap <F2> <Esc>:NERDTreeToggle<CR>
+nmap <F2> :NERDTreeToggle<CR>
+imap <F2> <Esc>:NERDTreeToggle<CR>
+nmap <leader>tre :NERDTreeToggle<CR>
+imap <leader>tre <Esc>:NERDTreeToggle<CR>
 
 "ctrlp settings
-nnoremap <leader>ff :CtrlP ~/code<CR>
-inoremap <leader>ff <Esc>:CtrlP ~/code<CR>
+nnoremap <leader>ff :CtrlP<CR>
+inoremap <leader>ff <Esc>:CtrlP<CR>
 
 "css-color
 "let g:cssColorVimDoNotMessMyUpdatetime = 1
@@ -87,11 +101,11 @@ set so=999
 
 "256col
 if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
+    set t_Co=256
 endif
 
 "colorscheme
-set background=light
+set background=dark
 colo PaperColor
 
 "enable mouse
@@ -162,7 +176,7 @@ nnoremap <leader>qa :qa<CR>
 inoremap <leader>qa <Esc>:qa<CR>
 
 "use ,1t to do one terminal
-nnoremap <leader>1t <C-w>v<C-w>l:terminal<CR><C-\><C-n><C-w>h
+nnoremap <leader>1t <C-w>v<C-w>l:terminal<CR><C-\><C-n>i
 "use ,1d to destroy one terminal
 nnoremap <leader>1d <C-w>l:q!<CR><C-w>h
 "use ,2t to do the double terminals
@@ -173,8 +187,8 @@ nnoremap <leader>2d <C-w>l:q!<CR>:q!<CR><C-w>h
 nnoremap <leader>3t <C-w>v<C-w>l:terminal<CR><C-\><C-n><C-w>s<C-w>j:terminal<CR><C-\><C-n><C-w>s<C-w>j:terminal<CR><C-\><C-n><C-w>h
 "use ,3d to destroy the triple terminals from the left window
 nnoremap <leader>3d <C-w>l:q!<CR>:q!<CR>:q!<CR><C-w>h
-"use ,at to add a terminal to right
-nnoremap <leader>at <C-w>l<C-w>j<C-w>s<C-w>j:terminal<CR><C-\><C-n><C-w>h
+"use ,at to add a terminal under this one
+nnoremap <leader>at <C-w>l<C-w>j<C-w>s<C-w>j:terminal<CR><C-\><C-n>i
 "rails terminals summon
 nnoremap <leader>rt <C-w>v<C-w>l:terminal<CR>cd code/sample_app<CR><C-\><C-n><C-w>s<C-w>j:terminal<CR>cd code/sample_app && bundle exec guard<CR><C-\><C-n><C-w>s<C-w>j:terminal<CR>cd code/sample_app && rails s<CR><C-\><C-n><C-w>h
 

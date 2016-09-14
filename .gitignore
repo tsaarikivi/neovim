@@ -2,5 +2,4 @@
 *.swp
 *.swo
 /plugged/*
-/autoload/*
 .netrwhist
