@@ -28,6 +28,8 @@ Plug 'mxw/vim-jsx'
 
 Plug 'tpope/vim-fugitive'
 
+Plug 'pangloss/vim-javascript'
+
 call plug#end()
 
 "Mapleader
