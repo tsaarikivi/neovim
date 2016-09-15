@@ -91,6 +91,9 @@ inoremap <leader>ff <Esc>:CtrlP<CR>
 "css-color
 "let g:cssColorVimDoNotMessMyUpdatetime = 1
 
+"javascript
+set foldmethod=syntax
+
 "--------
 "Functionality
 "----------
@@ -208,14 +211,14 @@ nnoremap <S-h> :bprevious<CR>
 nnoremap <S-l> :bnext<CR>
 "use ctrl hjkl to navigate windows
 tnoremap <Esc> <C-\><C-n>
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w><C-w>
+tnoremap <C-h> <C-\><C-n><C-w>h<C-w>
+tnoremap <C-j> <C-\><C-n><C-w>j<C-w>
+tnoremap <C-k> <C-\><C-n><C-w>k<C-w>
+tnoremap <C-l> <C-\><C-n><C-w>l<C-w>
+nnoremap <C-h> <C-w>h<C-w>
+nnoremap <C-j> <C-w>j<C-w>
+nnoremap <C-k> <C-w>k<C-w>
+nnoremap <C-l> <C-w>l<C-w>
 
 "use ,xx to kill buffer
 nnoremap <leader>xx :w<CR>:bd<CR>
