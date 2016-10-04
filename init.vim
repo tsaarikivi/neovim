@@ -1,6 +1,8 @@
 ":PlugUpgrade :PlugClean :PlugInstall :PlugUpdate
 call plug#begin()
 
+Plug 'mattn/emmet-vim'
+
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -19,6 +21,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'octref/RootIgnore'
 
 Plug 'tpope/vim-surround'
 
@@ -75,12 +79,16 @@ endif
 "----------
 
 "auto open nerdtree
-autocmd vimenter * NERDTree
-autocmd vimenter * NERDTreeToggle
-let g:NERDTreeWinPos = "left"
+"autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTreeToggle
+"let g:NERDTreeWinPos = "left"
+"NerdTree
+let loaded_netrwPlugin=1
+let NERDTreeRespectWildIgnore=1
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "toggle nerdtree
-nmap <F2> :NERDTreeToggle<CR>
-imap <F2> <Esc>:NERDTreeToggle<CR>
+noremap <F2> :NERDTreeToggle<CR>
 nmap <leader>tre :NERDTreeToggle<CR>
 imap <leader>tre <Esc>:NERDTreeToggle<CR>
 
@@ -92,7 +100,7 @@ inoremap <leader>ff <Esc>:CtrlP<CR>
 "let g:cssColorVimDoNotMessMyUpdatetime = 1
 
 "javascript
-set foldmethod=syntax
+"set foldmethod=syntax
 
 "--------
 "Functionality
