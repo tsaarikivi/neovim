@@ -34,6 +34,8 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'pangloss/vim-javascript'
 
+Plug 'jiangmiao/auto-pairs'
+
 call plug#end()
 
 "Mapleader
